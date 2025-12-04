@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './Pages.module.css';
 
-const HackathonsPage: React.FC = () => {
+const HackathonsPage = () => {
   const hackathons = [
     { id: 1, name: 'AI Hack Moscow', date: '18-17 декабря 2025', location: 'Москва, Россия • Онлайн' },
     { id: 2, name: 'IT World 2025', date: 'Март 2025', location: 'Санкт-Петербург' },

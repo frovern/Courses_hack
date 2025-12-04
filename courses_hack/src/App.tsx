@@ -6,19 +6,21 @@ import ProfilePage from './components/Pages/ProfilePage'
 import HackathonsPage from './components/Pages/HackathonsPage';
 import ParticipantsPage from './components/Pages/ParticipantsPage';
 import TeamsPage from './components/Pages/TeamsPage';
+import NotificationsPage from './components/Pages/NotificationsPage'
 
 
 function App() {
   return (
-    <Router>
-      <MainLayout>
-        <Routes>
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/hackathons" element={<HackathonsPage />} />
-          <Route path="/teams" element={<TeamsPage />} />
-          <Route path="/participants" element={<ParticipantsPage />} />
-        </Routes>
-      </MainLayout>
+<Router>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="teams" element={<TeamsPage />} />
+          <Route path="participants" element={<ParticipantsPage />} />
+          <Route path="notifications" element={<NotificationsPage />} />
+          <Route path="hackathons" element={<HackathonsPage />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

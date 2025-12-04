@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './Pages.module.css';
 
-const TeamsPage: React.FC = () => {
+const TeamsPage = () => {
   const teams = [
     { id: 1, name: 'МОЯ КОМАНДА Э/Б', members: 4, lookingFor: ['Бэкендер', 'Дизайнер'] },
     { id: 2, name: 'Quantum Coders', members: 3, lookingFor: ['Фронтендер'] },

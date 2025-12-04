@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './Pages.module.css';
 
-const ParticipantsPage: React.FC = () => {
+const ParticipantsPage = () => {
   const participants = [
     { id: 1, name: 'Иван Петров', role: 'Бэкендер', experience: '3 хакатона' },
     { id: 2, name: 'Мария Сидорова', role: 'Дизайнер', experience: '2 победы' },

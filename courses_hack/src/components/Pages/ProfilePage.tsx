@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './Pages.module.css';
 
-const ProfilePage: React.FC = () => {
+const ProfilePage = () => {
   return (
     <div className={styles.page}>
       <h1 className={styles.title}>Профиль: Александра Ускова</h1>
