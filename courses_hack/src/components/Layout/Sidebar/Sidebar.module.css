@@ -1,0 +1,45 @@
+/* Sidebar.module.css */
+.sidebar {
+  width: 293px;
+  height: 100vh;
+  background: #A587BA;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Стили для кнопок-ссылок в сайдбаре */
+.sidebarButton {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  text-decoration: none; /* Убираем подчеркивание у ссылки */
+  display: block; /* Чтобы ссылка занимала всю ширину */
+}
+
+.sidebarButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Стиль для активной кнопки */
+.sidebarButton.active {
+  background: rgba(255, 255, 255, 0.35);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sidebarPlaceholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  font-weight: 500;
+}

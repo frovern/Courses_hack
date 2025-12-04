@@ -1,0 +1,40 @@
+/* Layout.module.css */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+    margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Основной контейнер с сайдбаром и контентом */
+.mainContainer {
+  display: flex;
+  flex: 1;
+  
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f8f9fa;
+}
+
+.contentPlaceholder {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Плейсхолдер для будущих компонентов */
+.componentPlaceholder {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #dee2e6;
+  text-align: center;
+  color: #6c757d;
+  font-size: 1rem;
+}
