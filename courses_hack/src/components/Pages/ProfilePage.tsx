@@ -1,47 +1,79 @@
-import styles from './Pages.module.css';
+// src/components/pages/ProfilePage.tsx
+import { useUserStore } from '../../store/userStore';
+import { Link } from 'react-router-dom';
 
 const ProfilePage = () => {
+  const { currentUser } = useUserStore();
+  
+  if (!currentUser) {
+    return (
+      <div>
+        <h2>Профиль не найден</h2>
+        <p>Пожалуйста, заполните анкету</p>
+        <Link to="/register">Заполнить анкету</Link>
+      </div>
+    );
+  }
+  
+  if (!currentUser.hasFilledProfile) {
+    return (
+      <div>
+        <h2>Профиль не заполнен</h2>
+        <p>Пожалуйста, заполните анкету</p>
+        <Link to="/register">Заполнить анкету</Link>
+      </div>
+    );
+  }
+  
   return (
-    <div className={styles.page}>
-      <h1 className={styles.title}>Профиль: Александра Ускова</h1>
-      <div className={styles.content}>
-        <div className={styles.profileCard}>
-          <div className={styles.profileHeader}>
-            <div className={styles.avatar}>АУ</div>
-            <div>
-              <h2>Александра Ускова</h2>
-              <p className={styles.username}>@kkhryvst</p>
-            </div>
-          </div>
-          
-          <div className={styles.profileInfo}>
-            <div className={styles.infoSection}>
-              <h3>Роль:</h3>
-              <div className={styles.tags}>
-                <span className={styles.tag}>Фронтендер</span>
-                <span className={styles.tag}>Дизайнер</span>
-              </div>
-            </div>
-            
-            <div className={styles.infoSection}>
-              <h3>Опыт:</h3>
-              <p>2 победы • 4 хакатона</p>
-            </div>
-            
-            <div className={styles.infoSection}>
-              <h3>Навыки:</h3>
-              <div className={styles.tags}>
-                <span className={styles.tag}>Здшка</span>
-                <span className={styles.tag}>Моушн</span>
-              </div>
-            </div>
-            
-            <div className={styles.infoSection}>
-              <h3>О себе:</h3>
-              <p>Ищу классную команду, с которой сможем реализовать классные проекты</p>
-            </div>
-          </div>
+    <div>
+      <h1>Мой профиль</h1>
+      
+      <div>
+        <div>
+          <h2>{currentUser.fullName}</h2>
+          <p>Telegram: {currentUser.username}</p>
         </div>
+
+        {currentUser.role && (
+          <div>
+            <h3>Роль:</h3>
+            <p>{currentUser.customRole || currentUser.role}</p>
+          </div>
+        )}
+        
+        {(currentUser.wins !== undefined || currentUser.hackathonsCount !== undefined) && (
+          <div>
+            <h3>Опыт:</h3>
+            {currentUser.hackathonsCount !== undefined && (
+              <p>Участий в хакатонах: {currentUser.hackathonsCount}</p>
+            )}
+            {currentUser.wins !== undefined && (
+              <p>Побед: {currentUser.wins}</p>
+            )}
+          </div>
+        )}
+        
+        {currentUser.bio && (
+          <div>
+            <h3>О себе:</h3>
+            <p>{currentUser.bio}</p>
+          </div>
+        )}
+
+        {currentUser.skills && currentUser.skills.length > 0 && (
+          <div>
+            <h3>Навыки:</h3>
+            <div>
+              {currentUser.skills.map(skill => (
+                <span key={skill}>{skill}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+      <div>
+        <Link to="/register">Редактировать профиль</Link>
       </div>
     </div>
   );

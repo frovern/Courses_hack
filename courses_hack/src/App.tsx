@@ -1,25 +1,42 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainLayout from './components/Layout/MainLayout';
-import './Reset.css'
-import './App.css';
-import ProfilePage from './components/Pages/ProfilePage'
-import HackathonsPage from './components/Pages/HackathonsPage';
-import ParticipantsPage from './components/Pages/ParticipantsPage';
-import TeamsPage from './components/Pages/TeamsPage';
-import NotificationsPage from './components/Pages/NotificationsPage'
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import MainLayout from "./components/Layout/MainLayout";
+import "./Reset.css";
+import "./App.css";
+import { useUserStore } from './store/userStore';
+import ProfilePage from "./components/Pages/ProfilePage";
+import HackathonsPage from "./components/Pages/HackathonsPage";
+import ParticipantsPage from "./components/Pages/ParticipantsPage";
+import TeamsPage from "./components/Pages/TeamsPage";
+import NotificationsPage from "./components/Pages/NotificationsPage";
+import ProfileFormPage from "./components/Pages/ProfileFormPage/ProfileFormPage";
 
 
-function App() {
+const ProtectedLayout = () => {
+  const { currentUser } = useUserStore();
+  const isProfileFilled = currentUser?.hasFilledProfile === true;
+  
+  if (!isProfileFilled) {
+    return <Navigate to="/register" replace />;
+  }
+  
+  return <MainLayout />;
+};
+
+
+const App = () => {
+
   return (
-<Router>
+    <Router>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+        <Route path="/register" element={<ProfileFormPage />} />
+        <Route path="/" element={<ProtectedLayout />}>
           <Route path="profile" element={<ProfilePage />} />
           <Route path="teams" element={<TeamsPage />} />
           <Route path="participants" element={<ParticipantsPage />} />
           <Route path="notifications" element={<NotificationsPage />} />
           <Route path="hackathons" element={<HackathonsPage />} />
         </Route>
+        <Route path="*" element={<Navigate to="/register" />} />
       </Routes>
     </Router>
   );

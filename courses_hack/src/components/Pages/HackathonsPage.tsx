@@ -1,30 +1,23 @@
-import styles from './Pages.module.css';
+import { mockHackathons } from '../../data/mockData';
 
 const HackathonsPage = () => {
-  const hackathons = [
-    { id: 1, name: 'AI Hack Moscow', date: '18-17 декабря 2025', location: 'Москва, Россия • Онлайн' },
-    { id: 2, name: 'IT World 2025', date: 'Март 2025', location: 'Санкт-Петербург' },
-    { id: 3, name: 'HatGO 2024', date: 'Октябрь 2024', location: 'Онлайн' },
-    { id: 4, name: 'FRAME ME 2024', date: 'Август 2024', location: 'Казань' },
-  ];
-
   return (
-    <div className={styles.page}>
-      <h1 className={styles.title}>Хакатоны</h1>
-      <div className={styles.content}>
-        <div className={styles.hackathonsList}>
-          {hackathons.map((hackathon) => (
-            <div key={hackathon.id} className={styles.hackathonCard}>
-              <h3>{hackathon.name}</h3>
-              <p className={styles.date}>{hackathon.date}</p>
-              <p className={styles.location}>{hackathon.location}</p>
-              <button className={styles.joinButton}>Принять участие</button>
-            </div>
-          ))}
+    <div>
+      <h1>Выберите хакатон</h1>
+      <p>Для начала выберите хакатон, в котором хотите участвовать</p>
+      
+      {mockHackathons.map(hackathon => (
+        <div key={hackathon.id}>
+          <h3>{hackathon.title}</h3>
+          <p>{hackathon.description}</p>
+          <p>Дата: {hackathon.startDate} - {hackathon.endDate}</p>
+          <p>Локация: {hackathon.location}</p>
+          <p>Статус: {hackathon.isActive ? 'Активный' : 'Завершён'}</p>
+          
+          <button>Выбрать этот хакатон</button>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
-
 export default HackathonsPage;
