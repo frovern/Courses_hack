@@ -1,8 +1,6 @@
-import styles from "./Pages.module.css";
-
 const NotificationPage = () => {
   return (
-    <div className={styles.page}>
+    <div style={{ paddingTop: '54px' }}>
       <div>
         <h1>Уведомления</h1>
         <ul>

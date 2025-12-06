@@ -1,4 +1,3 @@
-// src/components/features/UserCard/UserCard.tsx
 import type { User } from '../../../types';
 
 
@@ -58,12 +57,6 @@ const UserCard = ({ user, onInvite }: UserCardProps) => {
           <p>
             {getExperienceText()}
           </p>
-          
-          {user.createdAt && (
-            <p>
-              Зарегистрирован: {new Date(user.createdAt).toLocaleDateString('ru-RU')}
-            </p>
-          )}
         </div>
       </div>
       

@@ -1,4 +1,4 @@
-import styles from './Pages.module.css';
+import styles from './ParticipantsPage.module.css';
 
 const ParticipantsPage = () => {
   const participants = [
@@ -12,8 +12,6 @@ const ParticipantsPage = () => {
     <div className={styles.page}>
       <h1 className={styles.title}>Найти участника</h1>
       <div className={styles.content}>
-        <p>Ищете участников для своей команды? Вот доступные специалисты:</p>
-        
         <div className={styles.participantsList}>
           {participants.map((participant) => (
             <div key={participant.id} className={styles.participantCard}>
